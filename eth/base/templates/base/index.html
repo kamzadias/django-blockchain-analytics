@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const data = {
+          labels: {{ labels|safe }},
+          datasets: [{
+                    label: "Crypto Balance",
+                    data: {{ data }},
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                      'rgba(255, 205, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(201, 203, 207, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgb(255, 99, 132)',
+                      'rgb(255, 159, 64)',
+                      'rgb(255, 205, 86)',
+                      'rgb(75, 192, 192)',
+                      'rgb(54, 162, 235)',
+                      'rgb(153, 102, 255)',
+                      'rgb(201, 203, 207)'
+                    ],
+                    hoverBackgroundColor: 'rgba(137,49,245,0.98)',
+                    hoverBorderColor: 'rgba(137,49,245,0.98)',
+                }]
+      };
+      const options = {
+        plugins: {
+            legend: {
+              display: false,
+            },
+        },
+        scales: {
+            y: {
+              beginAtZero: true,
+            },
+            x: {
+                ticks: {
+                    display: false
+                }
+            }
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <div style="margin: 0 auto;">
+      <div style="width: 40%; height: 50%">
+        <center><h3 style="font-size: 25px;font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif">Pie Chart</h3></center>
+        <canvas id="pie-chart"></canvas>
+        <script>
+          const pieChart = new Chart(document.getElementById("pie-chart"), {
+            type: "pie",
+            data: data,
+            options: options,
+          });
+        </script>
+      </div>
+      <div style="margin-top: 15px; width: 60%; height: 50%;">
+        <center><h3 style="font-size: 25px;font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif">Line Chart</h3></center>
+        <canvas id="line-chart"></canvas>
+        <script>
+          const lineChart = new Chart(document.getElementById("line-chart"), {
+            type: "line",
+            data: data,
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1,
+            options: options,
+          });
+        </script>
+      </div>
+      <div style="margin-top: 15px; width: 60%; height: 50%">
+        <center><h3 style="font-size: 25px;font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif">Bar Chart</h3></center>
+        <canvas id="bar-chart"></canvas>
+        <script>
+          const barChart = new Chart(document.getElementById("bar-chart"), {
+            type: "bar",
+            data: data,
+            options: options,
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
