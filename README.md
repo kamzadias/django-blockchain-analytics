@@ -1,6 +1,11 @@
 # Blockchain analytics tool using Django
 Visualizing top 100 Ethereum addresses by ETH Balance by 3 types of charts (Pie Chart,Bar Chart,Line Chart).
 
+Project made by:
+- Dias Kamza
+- Yerkebulan Zhigerbayev
+- Zhangir Bayanov
+
 ## Installation
 
 - Install libraries:
